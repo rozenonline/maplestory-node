@@ -1,0 +1,40 @@
+{
+  "name": "maplestory",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "dotenv": "^8.2.0",
+    "iconv-lite": "^0.6.2",
+    "moment-timezone": "^0.5.32",
+    "mysql2": "^2.2.5",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.29",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.0",
+    "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.33",
+    "@types/mysql2": "types/mysql2",
+    "@types/node": "^14.14.8",
+    "@types/xml2js": "^0.4.7",
+    "@typescript-eslint/eslint-plugin": "^4.8.1",
+    "@typescript-eslint/parser": "^4.8.1",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.2",
+    "ts-node": "^9.0.0",
+    "ts-node-dev": "^1.0.0",
+    "typescript": "^4.0.5"
+  },
+  "scripts": {
+    "start": "yarn tsc && cross-env NODE_ENV=production node dist/index",
+    "dev": "cross-env NODE_ENV=development ts-node-dev --tree-kill --no-notify --respawn --transpile-only src/index.ts"
+  }
+}
