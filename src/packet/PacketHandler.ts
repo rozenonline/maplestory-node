@@ -11,6 +11,7 @@ import AuthSecondPasswordHandler from '../handlers/AuthSecondPasswordHandler';
 import CharacterSelectWithSPWHandler from '../handlers/CharacterSelectWithSPWHandler';
 import Opcodes from './Opcodes';
 import DeleteCharacterHandler from '../handlers/DeleteCharacterHandler';
+import LoggedInHandler from '../handlers/channel/LoggedInHandler';
 
 interface IOpcodesAndHandlers {
   [opcode: string]: (client: Client, reader: PacketReader) => void;
@@ -29,7 +30,10 @@ class PacketHandler {
     DELETE_CHAR: DeleteCharacterHandler, // 캐릭터 삭제
     AUTH_SECOND_PASSWORD: AuthSecondPasswordHandler, // 2차비밀번호 생성
     CHAR_SELECT_WITH_SPW: CharacterSelectWithSPWHandler, // 캐릭터 선택 (2차 비밀번호와 함께)
-    RELOG_REQUEST: null // 인게임 -> 로그인창시 (필요없음)
+    RELOG_REQUEST: null, // 인게임 -> 로그인창시 (필요없음)
+
+    // 여기서부터 인게임
+    PLAYER_LOGGEDIN: LoggedInHandler
   };
 
   public static getHandler(opcode: number) {

@@ -7,7 +7,7 @@ import { getChannelServer } from '../server/WorldClient';
 const CharacterSelectHandler = async (client: Client, reader: PacketReader) => {
   const characterId = reader.readUInt();
 
-  const channel = await getChannelServer();
+  const channel = await getChannelServer(client.channelId);
 
   const packet = new PacketWriter(Opcodes.serverOpcodes.SERVER_IP);
   packet.writeUShort(0);

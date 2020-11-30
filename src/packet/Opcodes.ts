@@ -24,7 +24,9 @@ class Opcodes {
     CLIENT_ERROR: 0x0b,
     RELOG_REQUEST: 0x0e, // InGame -> Return to Title
     AUTH_SECOND_PASSWORD: 0x0f,
-    CHAR_SELECT_WITH_SPW: 0x10
+    CHAR_SELECT_WITH_SPW: 0x10,
+
+    PLAYER_LOGGEDIN: 0x06
   };
 
   static getClientOpcodeByValue(value: number) {

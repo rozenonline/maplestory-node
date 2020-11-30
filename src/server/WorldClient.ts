@@ -1,8 +1,12 @@
 import net from 'net';
 import config from '../config';
 
-export const getChannelServer = async () => {
-  return await executeFunctionRemote('getChannelAddress(0);');
+export const getChannelServer = async (channelId: number) => {
+  return await executeFunctionRemote(`getChannelAddress(${channelId});`);
+};
+
+export const isChannelServerActive = async (channelId: number) => {
+  return await executeFunctionRemote(`isChannelServerActive(${channelId});`);
 };
 
 const executeFunctionRemote = async (functionHead: string) => {

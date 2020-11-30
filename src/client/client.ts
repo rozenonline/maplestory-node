@@ -26,9 +26,14 @@ class Client {
   public lastPing: moment.Moment;
   public lastPong: moment.Moment;
 
+  // 접속중인 월드/채널 정보
+  public worldId;
+  public channelId;
+
   // 생성자
-  constructor(socket: Socket) {
+  constructor(socket: Socket, channelId = -1) {
     this.socket = socket;
+    this.channelId = channelId;
     this.receiveCrypto = new PacketCrypto(
       initialIvReceive,
       config.global.mapleVersion

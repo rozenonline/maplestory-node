@@ -5,7 +5,8 @@ class WorldServer {
   private netServer = net.createServer();
   private port = config.world.worldPort;
   private loginServer;
-  private channelServers = [];
+  private channelServers: Array<{ ip: string; port: number }> =
+    config.world.channelServers;
 
   constructor() {
     this.createServer();
@@ -36,8 +37,25 @@ class WorldServer {
     });
   }
 
-  private getChannelAddress(channelNumber: number) {
-    return { ip: '127.0.0.1', port: '7575' };
+  private getChannelServers() {
+    return this.channelServers;
+  }
+
+  private getChannelAddress(channelId: number) {
+    return this.channelServers[channelId];
+  }
+
+  private isChannelServerActive(channelId: number) {
+    const worldClient = new net.Socket();
+
+    try {
+      worldClient.connect(config.world.worldPort, config.world.worldHost);
+      console.log('ON');
+      return true;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
   }
 }
 

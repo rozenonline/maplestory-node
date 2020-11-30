@@ -11,6 +11,9 @@ const CharacterListRequestHandler = async (
   const worldId = reader.readByte();
   const channelId = reader.readByte() + 1;
 
+  client.worldId = worldId;
+  client.channelId = channelId;
+
   // 캐릭터 로딩
   await client.account.loadCharacters(worldId);
 
